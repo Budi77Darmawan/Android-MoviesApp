@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 apply from: '../shared_dependencies.gradle'
 
@@ -36,7 +37,13 @@ android {
     buildFeatures {
         viewBinding true
     }
+    kapt {
+        correctErrorTypes true
+    }
 }
 
 dependencies {
+    implementation project(":core")
+    implementation project(":common_extensions")
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
