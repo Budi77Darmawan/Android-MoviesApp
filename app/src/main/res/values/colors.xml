@@ -7,4 +7,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#151C25</color>
+    <color name="colorPrimaryDark">#1D1E1E</color>
+    <color name="colorSecond">#F5C30F</color>
+    <color name="colorSecondDark">#1E2634</color>
+    <color name="green">#00FF00</color>
+    <color name="red">#FF0000</color>
+
+    <!--    Shimmer-->
+    <color name="shimmerPrimary">#A8A8A8</color>
+    <color name="shimmerSecond">#8E8E8E</color>
+    <color name="shimmerText">#575757</color>
 </resources>

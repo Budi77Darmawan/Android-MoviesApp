@@ -21,5 +21,5 @@ data class ActorResult(
     @SerializedName("known_for")
     val listMovies: List<MovieResult>?,
     @SerializedName("profile_path")
-    val imageUri: String?
+    val image: String?
 )

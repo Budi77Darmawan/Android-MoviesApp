@@ -24,4 +24,12 @@ dependencies {
     annotationProcessor 'com.google.dagger:hilt-compiler:2.41'
     kapt 'com.google.dagger:hilt-compiler:2.41'
 
+    // Carousel x Indicator
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    implementation 'io.github.vejei.carouselview:carouselview:1.0.0-alpha'
+    implementation 'io.github.vejei.viewpagerindicator:viewpagerindicator:1.0.0-alpha.1'
+
+    // Anko
+    implementation 'org.jetbrains.anko:anko:0.10.8'
+
 }

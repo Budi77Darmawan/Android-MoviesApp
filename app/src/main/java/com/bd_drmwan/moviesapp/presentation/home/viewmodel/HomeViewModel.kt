@@ -2,30 +2,66 @@ package com.bd_drmwan.moviesapp.presentation.home.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bd_drmwan.core.enums.MoviesType
+import com.bd_drmwan.core.main.domain.model.ActorModel
 import com.bd_drmwan.core.main.domain.model.MovieModel
-import com.bd_drmwan.core.main.domain.repository.IMoviesRepository
 import com.bd_drmwan.core.main.vo.Resource
+import com.bd_drmwan.moviesapp.presentation.home.usecase.IHomeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val repository: IMoviesRepository
+    private val useCase: IHomeUseCase
 ) : ViewModel() {
 
-    private val _listMovies = MutableSharedFlow<Resource<List<MovieModel>>>()
-    val listMovies get() = _listMovies.asSharedFlow()
+    private val _nowPlayingMovies = MutableStateFlow<Resource<List<MovieModel>>?>(null)
+    private val _upComingMovies = MutableStateFlow<Resource<List<MovieModel>>?>(null)
+    private val _topRatedMovies = MutableStateFlow<Resource<List<MovieModel>>?>(null)
+    private val _popularActors = MutableStateFlow<Resource<List<ActorModel>>?>(null)
 
-    fun getPopularMovie() {
+    val nowPlayingMovies get() = _nowPlayingMovies.asStateFlow()
+    val upComingMovies get() = _upComingMovies.asStateFlow()
+    val topRatedMovies get() = _topRatedMovies.asStateFlow()
+    val popularActors get() = _popularActors.asStateFlow()
+
+    init {
+        getUpComingMovies()
+        getNowPlayingMovies()
+        getTopRatedMovies()
+        getPopularActors()
+    }
+
+    private fun getNowPlayingMovies() {
         viewModelScope.launch {
-            repository.getMovies(MoviesType.POPULAR).collect {
-                    _listMovies.emit(it)
+            useCase.getNowPlaying().collect {
+                    _nowPlayingMovies.emit(it)
                 }
+        }
+    }
+
+    private fun getUpComingMovies() {
+        viewModelScope.launch {
+            useCase.getUpComingMovies().collect {
+                _upComingMovies.emit(it)
+            }
+        }
+    }
+
+    private fun getTopRatedMovies() {
+        viewModelScope.launch {
+            useCase.getTopRatedMovies().collect {
+                _topRatedMovies.emit(it)
+            }
+        }
+    }
+
+    private fun getPopularActors() {
+        viewModelScope.launch {
+            useCase.getPopularActors().collect {
+                _popularActors.emit(it)
+            }
         }
     }
 }

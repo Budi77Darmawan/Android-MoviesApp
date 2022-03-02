@@ -20,13 +20,6 @@ interface MoviesService {
         @Query("page") page: Int? = 1
     ): Response<MoviesResponse>
 
-    @GET("movie/popular")
-    suspend fun getPopularMovies(
-        @Query("api_key") apiKey: String?,
-        @Query("language") language: String?,
-        @Query("page") page: Int? = 1
-    ): Response<MoviesResponse>
-
     @GET("movie/top_rated")
     suspend fun getTopRatedMovies(
         @Query("api_key") apiKey: String?,
