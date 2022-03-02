@@ -10,13 +10,13 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 fun ImageView.loadImage(
-    uri: String,
+    uri: String?,
     cornerRadius: Int = 1,
     progressColor: Int = R.color.default_progress_color
 ) {
     val colorCompat = ContextCompat.getColor(this.context, progressColor)
     Glide.with(this)
-        .load(uri)
+        .load(uri.toString())
         .placeholder(getProgressDrawable(this.context, colorCompat))
         .error(R.drawable.ic_default_image)
         .transform(RoundedCorners(cornerRadius))
