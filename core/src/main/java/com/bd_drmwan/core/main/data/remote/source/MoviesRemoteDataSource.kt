@@ -21,6 +21,27 @@ class MoviesRemoteDataSource @Inject constructor(
         }
     }
 
+    suspend fun searchMovies(title: String): Flow<Resource<MoviesResponse>> {
+        return flow {
+            emit(Resource.Loading())
+            try {
+                val response = service.searchMovies(apiKey, title, language, 1)
+                validateResponse(response,
+                    onSuccess = {
+                        emit(Resource.Success(it))
+                    },
+                    onError = { errorMsg ->
+                        emit(Resource.Error(errorMsg))
+                    }
+                )
+            } catch (e: Exception) {
+                validateError(e) { errorMsg, errorType ->
+                    emit(Resource.Error(errorMsg, errorType))
+                }
+            }
+        }
+    }
+
     private suspend fun getNowPlaying(): Flow<Resource<MoviesResponse>> {
         return flow {
             emit(Resource.Loading())

@@ -2,6 +2,7 @@ package com.bd_drmwan.moviesapp.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bd_drmwan.common_extensions.makeStatusBarTransparent
 import com.bd_drmwan.moviesapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -13,6 +14,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        makeStatusBarTransparent()
     }
 }

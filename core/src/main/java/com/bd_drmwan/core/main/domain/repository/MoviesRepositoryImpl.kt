@@ -27,4 +27,20 @@ class MoviesRepositoryImpl @Inject constructor(
             }
         }
     }
+
+    override suspend fun searchMovies(title: String): Flow<Resource<List<MovieModel>>> {
+        return flow {
+            remoteDataSource.searchMovies(title).collect {
+                when (it) {
+                    is Resource.Loading -> emit(Resource.Loading())
+                    is Resource.Error -> emit(Resource.Error(it.message, it.errorType))
+                    is Resource.Success -> {
+                        val data = DataMapper.mapMoviesResponseToMoviesModel(it.data)
+                        emit(Resource.Success(data))
+                    }
+                }
+            }
+        }
+    }
+
 }

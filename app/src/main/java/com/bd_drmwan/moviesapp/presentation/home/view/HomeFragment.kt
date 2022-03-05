@@ -21,7 +21,7 @@ import com.bd_drmwan.moviesapp.databinding.ContainerItemGridMoviesBinding
 import com.bd_drmwan.moviesapp.databinding.FragmentHomeBinding
 import com.bd_drmwan.moviesapp.presentation.home.adapter.BannerAdapter
 import com.bd_drmwan.moviesapp.presentation.home.adapter.GridActorsAdapter
-import com.bd_drmwan.moviesapp.presentation.home.adapter.GridMoviesAdapter
+import com.bd_drmwan.moviesapp.presentation.home.adapter.MoviesAdapter
 import com.bd_drmwan.moviesapp.presentation.home.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.vejei.viewpagerindicator.indicator.CircleIndicator
@@ -87,10 +87,11 @@ class HomeFragment : Fragment() {
         moviesType: MoviesType,
         movies: List<MovieModel>?
     ) {
-        val gridAdapter = GridMoviesAdapter()
+        val gridAdapter = MoviesAdapter(true)
         gridAdapter.setData(movies?.take(7))
         gridAdapter.onRootClicked {
-            toast(it?.title.toString())
+            val toDetail = HomeFragmentDirections.actionHomeFragmentToDetailFragment(it)
+            findNavController().navigate(toDetail)
         }
 
         container?.apply {

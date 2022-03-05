@@ -5,6 +5,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 
 fun Fragment.toast(message: String? = getString(R.string.default_message_toast)) =
@@ -23,3 +24,9 @@ fun Fragment.horizontalLinearLayoutManager() =
 
 fun Fragment.verticalLinearLayoutManager() =
     LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+
+fun Fragment.verticalGridLayoutManager(spanCount: Int) =
+    GridLayoutManager(activity, spanCount, LinearLayoutManager.VERTICAL, false)
+
+fun Fragment.horizontalGridLayoutManager(spanCount: Int) =
+    GridLayoutManager(activity, spanCount, LinearLayoutManager.HORIZONTAL, false)

@@ -10,7 +10,9 @@ import com.bd_drmwan.core.main.domain.model.MovieModel
 import com.bd_drmwan.moviesapp.R
 import com.bd_drmwan.moviesapp.databinding.ItemGridHorizontalMovieBinding
 
-class GridMoviesAdapter : BaseAdapter<MovieModel, GridMoviesAdapter.ViewHolder>() {
+class MoviesAdapter(
+    private val isLinearLayout: Boolean = false
+) : BaseAdapter<MovieModel, MoviesAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ItemGridHorizontalMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -23,14 +25,16 @@ class GridMoviesAdapter : BaseAdapter<MovieModel, GridMoviesAdapter.ViewHolder>(
 
         fun setupView(movie: MovieModel?) {
             with(binding) {
-                setupHorizontalView(bindingAdapterPosition, root, root.context)
+                if (isLinearLayout) {
+                    setupHorizontalView(bindingAdapterPosition, root, root.context)
+                }
 
                 tvTitleMovie.text = movie?.title ?: "-"
                 tvRating.text = movie?.vote?.toDouble()?.toString()
                 val rate = ((movie?.vote?.toDouble() ?: 0.0) * 10).toInt()
                 circularRatingMovie.progress = rate
                 val colorCircular = when {
-                    rate >= 70 -> ContextCompat.getColor(root.context, R.color.green)
+                    rate >= 75 -> ContextCompat.getColor(root.context, R.color.green)
                     rate >= 60 -> ContextCompat.getColor(root.context, R.color.colorSecond)
                     else -> ContextCompat.getColor(root.context, R.color.red)
                 }
