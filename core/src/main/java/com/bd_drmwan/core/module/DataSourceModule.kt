@@ -1,8 +1,8 @@
 package com.bd_drmwan.core.module
 
-import com.bd_drmwan.core.main.data.remote.source.ActorsRemoteDataSource
+import com.bd_drmwan.core.main.data.remote.source.CastRemoteDataSource
 import com.bd_drmwan.core.main.data.remote.source.MoviesRemoteDataSource
-import com.bd_drmwan.core.main.services.ActorsService
+import com.bd_drmwan.core.main.services.CastService
 import com.bd_drmwan.core.main.services.MoviesService
 import dagger.Module
 import dagger.Provides
@@ -25,8 +25,8 @@ object DataSourceModule {
     @Singleton
     @Provides
     fun provideActorsRemoteDataSource(
-        service: ActorsService
-    ): ActorsRemoteDataSource {
-        return ActorsRemoteDataSource(service)
+        service: CastService
+    ): CastRemoteDataSource {
+        return CastRemoteDataSource(service)
     }
 }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:fillViewport="true"
+    android:paddingHorizontal="15dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="10dp"
+    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+    <TextView
+        android:id="@+id/textView_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Plot Summary"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:text="Semper semper ut. Nisi mus sodales. Eleifend taciti nibh. Dictum lacinia luctus tincidunt sollicitudin tellus viverra massa integer nisl eleifend ipsum urna sociis orci a tellus pharetra mattis Proin hymenaeos dignissim erat adipiscing, proin. Sem mauris eget purus, habitasse fames adipiscing cubilia, senectus tincidunt rutrum rutrum felis inceptos fringilla proin penatibus suscipit vestibulum lobortis semper augue vehicula condimentum semper commodo elementum praesent porttitor velit sem fermentum felis urna vel cras dui odio nonummy quisque consectetuer non consectetuer etiam erat auctor leo erat lacus. \nLeo venenatis eget eget volutpat risus purus egestas nunc nunc nulla cursus Egestas congue cum. Commodo, nec eget fames a quam nibh at viverra montes risus imperdiet volutpat ultrices potenti per curabitur viverra. Tristique nunc nascetur malesuada fusce phasellus cubilia nostra class imperdiet est sem pharetra molestie laoreet rutrum nibh morbi maecenas mus praesent. Dis malesuada, pharetra porttitor nascetur magnis penatibus imperdiet eget consequat mauris mus. Nam morbi mus habitant blandit nascetur.\nTortor adipiscing nisl arcu taciti aenean a luctus dignissim dignissim facilisis luctus proin proin magnis id netus. Metus sapien feugiat penatibus blandit odio sodales faucibus enim suscipit dignissim molestie mi augue ornare Purus Dictumst quis egestas convallis bibendum tristique cubilia nisi donec erat fusce a dis aliquet fames dolor tempus. Torquent eget sollicitudin donec. Tellus sodales. Ante tortor feugiat orci magna nulla leo. Elit leo cum sociis. Tempus dui nisl rhoncus phasellus morbi curabitur erat eu gravida egestas."
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_content" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

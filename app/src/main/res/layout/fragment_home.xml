@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    android:paddingTop="26dp"
+    android:paddingTop="@dimen/status_bar_height"
     android:paddingBottom="20dp"
     tools:context=".presentation.home.view.HomeFragment">
 

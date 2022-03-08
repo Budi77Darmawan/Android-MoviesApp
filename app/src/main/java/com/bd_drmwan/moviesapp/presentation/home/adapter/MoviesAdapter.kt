@@ -30,8 +30,8 @@ class MoviesAdapter(
                 }
 
                 tvTitleMovie.text = movie?.title ?: "-"
-                tvRating.text = movie?.vote?.toDouble()?.toString()
-                val rate = ((movie?.vote?.toDouble() ?: 0.0) * 10).toInt()
+                tvRating.text = movie?.voteAverage?.toDouble()?.toString()
+                val rate = ((movie?.voteAverage?.toDouble() ?: 0.0) * 10).toInt()
                 circularRatingMovie.progress = rate
                 val colorCircular = when {
                     rate >= 75 -> ContextCompat.getColor(root.context, R.color.green)

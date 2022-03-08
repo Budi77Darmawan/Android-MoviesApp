@@ -1,7 +1,9 @@
 package com.bd_drmwan.core.main.domain.repository
 
+import com.bd_drmwan.core.Genres
 import com.bd_drmwan.core.enums.MoviesType
 import com.bd_drmwan.core.main.data.remote.source.MoviesRemoteDataSource
+import com.bd_drmwan.core.main.domain.model.CastModel
 import com.bd_drmwan.core.main.domain.model.MovieModel
 import com.bd_drmwan.core.main.vo.Resource
 import com.bd_drmwan.core.utils.DataMapper
@@ -37,6 +39,36 @@ class MoviesRepositoryImpl @Inject constructor(
                     is Resource.Success -> {
                         val data = DataMapper.mapMoviesResponseToMoviesModel(it.data)
                         emit(Resource.Success(data))
+                    }
+                }
+            }
+        }
+    }
+
+    override suspend fun getCastOnMovie(movieId: Int): Flow<Resource<List<CastModel>>> {
+        return flow {
+            remoteDataSource.getCreditMovie(movieId).collect {
+                when (it) {
+                    is Resource.Loading -> emit(Resource.Loading())
+                    is Resource.Error -> emit(Resource.Error(it.message, it.errorType))
+                    is Resource.Success -> {
+                        val data = DataMapper.mapCastResponseToCastModel(it.data?.cast)
+                        emit(Resource.Success(data))
+                    }
+                }
+            }
+        }
+    }
+
+    override suspend fun getGenresMovie(): Flow<Resource<Any?>> {
+        return flow {
+            remoteDataSource.getGenreMovies().collect {
+                when (it) {
+                    is Resource.Loading -> emit(Resource.Loading())
+                    is Resource.Error -> emit(Resource.Error(it.message, it.errorType))
+                    is Resource.Success -> {
+                        Genres.setData(it.data?.genres)
+                        emit(Resource.Success(null))
                     }
                 }
             }

@@ -2,7 +2,7 @@ package com.bd_drmwan.moviesapp.presentation.home.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bd_drmwan.core.main.domain.model.ActorModel
+import com.bd_drmwan.core.main.domain.model.CastModel
 import com.bd_drmwan.core.main.domain.model.MovieModel
 import com.bd_drmwan.core.main.vo.Resource
 import com.bd_drmwan.moviesapp.presentation.home.usecase.IHomeUseCase
@@ -19,7 +19,7 @@ class HomeViewModel @Inject constructor(
     private val _nowPlayingMovies = MutableStateFlow<Resource<List<MovieModel>>?>(null)
     private val _upComingMovies = MutableStateFlow<Resource<List<MovieModel>>?>(null)
     private val _topRatedMovies = MutableStateFlow<Resource<List<MovieModel>>?>(null)
-    private val _popularActors = MutableStateFlow<Resource<List<ActorModel>>?>(null)
+    private val _popularActors = MutableStateFlow<Resource<List<CastModel>>?>(null)
 
     val nowPlayingMovies get() = _nowPlayingMovies.asStateFlow()
     val upComingMovies get() = _upComingMovies.asStateFlow()

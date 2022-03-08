@@ -8,12 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.bd_drmwan.common_extensions.gone
-import com.bd_drmwan.common_extensions.horizontalLinearLayoutManager
-import com.bd_drmwan.common_extensions.toast
-import com.bd_drmwan.common_extensions.visible
+import com.bd_drmwan.common_extensions.*
 import com.bd_drmwan.core.enums.MoviesType
-import com.bd_drmwan.core.main.domain.model.ActorModel
+import com.bd_drmwan.core.main.domain.model.CastModel
 import com.bd_drmwan.core.main.domain.model.MovieModel
 import com.bd_drmwan.core.main.vo.Resource
 import com.bd_drmwan.moviesapp.R
@@ -102,9 +99,9 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setupRecyclerViewActors(actors: List<ActorModel>?) {
+    private fun setupRecyclerViewActors(casts: List<CastModel>?) {
         val gridAdapter = GridActorsAdapter()
-        gridAdapter.setData(actors?.take(7))
+        gridAdapter.setData(casts?.take(7))
         gridAdapter.onRootClicked {
             toast(it?.name.toString())
         }

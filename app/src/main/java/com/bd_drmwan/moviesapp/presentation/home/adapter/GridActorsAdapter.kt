@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bd_drmwan.common_extensions.loadImage
 import com.bd_drmwan.core.base.BaseAdapter
-import com.bd_drmwan.core.main.domain.model.ActorModel
+import com.bd_drmwan.core.main.domain.model.CastModel
 import com.bd_drmwan.moviesapp.databinding.ItemGridHorizontalActorBinding
 
 
-class GridActorsAdapter : BaseAdapter<ActorModel, GridActorsAdapter.ViewHolder>() {
+class GridActorsAdapter : BaseAdapter<CastModel, GridActorsAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ItemGridHorizontalActorBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -20,11 +20,11 @@ class GridActorsAdapter : BaseAdapter<ActorModel, GridActorsAdapter.ViewHolder>(
             }
         }
 
-        fun setupView(actor: ActorModel?) {
+        fun setupView(cast: CastModel?) {
             with(binding) {
                 setupHorizontalView(bindingAdapterPosition, root, root.context)
-                tvNameActor.text = actor?.name ?: "Unknown"
-                imgActor.loadImage(actor?.imageUri, 20)
+                tvNameActor.text = cast?.name ?: "Unknown"
+                imgActor.loadImage(cast?.imageUri, 20)
             }
         }
     }

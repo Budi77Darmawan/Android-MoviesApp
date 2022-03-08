@@ -11,10 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.bd_drmwan.common_extensions.gone
-import com.bd_drmwan.common_extensions.toast
-import com.bd_drmwan.common_extensions.verticalGridLayoutManager
-import com.bd_drmwan.common_extensions.visible
+import com.bd_drmwan.common_extensions.*
 import com.bd_drmwan.core.main.vo.Resource
 import com.bd_drmwan.core.utils.DebouncerTextListener
 import com.bd_drmwan.moviesapp.R

@@ -1,7 +1,7 @@
 package com.bd_drmwan.core.module
 
 import com.bd_drmwan.core.BuildConfig.BASE_URL
-import com.bd_drmwan.core.main.services.ActorsService
+import com.bd_drmwan.core.main.services.CastService
 import com.bd_drmwan.core.main.services.MoviesService
 import dagger.Module
 import dagger.Provides
@@ -28,10 +28,10 @@ object ServiceModule {
     @Provides
     fun provideActorsService(
         client: OkHttpClient
-    ): ActorsService {
+    ): CastService {
         return NetworkModule
             .buildRetrofit(BASE_URL, client)
-            .create(ActorsService::class.java)
+            .create(CastService::class.java)
     }
 
 }

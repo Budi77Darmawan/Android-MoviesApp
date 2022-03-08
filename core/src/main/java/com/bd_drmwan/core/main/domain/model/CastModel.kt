@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class ActorModel(
+data class CastModel(
     val id: Int?,
     val name: String?,
     val gender: Int?,
