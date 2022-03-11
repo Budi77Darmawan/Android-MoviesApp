@@ -65,4 +65,7 @@ dependencies {
     releaseImplementation 'com.readystatesoftware.chuck:library-no-op:1.1.0'
     // Anko
     implementation 'org.jetbrains.anko:anko:0.10.8'
+    // Room
+    implementation 'androidx.room:room-ktx:2.4.2'
+    kapt 'androidx.room:room-compiler:2.4.2'
 }

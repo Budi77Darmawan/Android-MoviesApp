@@ -24,20 +24,20 @@ class MoviesRemoteDataSource @Inject constructor(
 
     suspend fun searchMovies(title: String): Flow<Resource<MoviesResponse>> {
         return flow {
-            emit(Resource.Loading())
+            emit(Resource.Loading<MoviesResponse>())
             try {
                 val response = service.searchMovies(apiKey, title, language, 1)
                 validateResponse(response,
                     onSuccess = {
-                        emit(Resource.Success(it))
+                        emit(Resource.Success<MoviesResponse>(it))
                     },
                     onError = { errorMsg ->
-                        emit(Resource.Error(errorMsg))
+                        emit(Resource.Error<MoviesResponse>(errorMsg))
                     }
                 )
             } catch (e: Exception) {
                 validateError(e) { errorMsg, errorType ->
-                    emit(Resource.Error(errorMsg, errorType))
+                    emit(Resource.Error<MoviesResponse>(errorMsg, errorType))
                 }
             }
         }
@@ -45,20 +45,20 @@ class MoviesRemoteDataSource @Inject constructor(
 
     private suspend fun getNowPlaying(): Flow<Resource<MoviesResponse>> {
         return flow {
-            emit(Resource.Loading())
+            emit(Resource.Loading<MoviesResponse>())
             try {
                 val response = service.getNowPlayingMovies(apiKey, language, 1)
                 validateResponse(response,
                     onSuccess = {
-                        emit(Resource.Success(it))
+                        emit(Resource.Success<MoviesResponse>(it))
                     },
                     onError = { errorMsg ->
-                        emit(Resource.Error(errorMsg))
+                        emit(Resource.Error<MoviesResponse>(errorMsg))
                     }
                 )
             } catch (e: Exception) {
                 validateError(e) { errorMsg, errorType ->
-                    emit(Resource.Error(errorMsg, errorType))
+                    emit(Resource.Error<MoviesResponse>(errorMsg, errorType))
                 }
             }
         }
@@ -66,20 +66,20 @@ class MoviesRemoteDataSource @Inject constructor(
 
     private suspend fun getUpComingMovies(): Flow<Resource<MoviesResponse>> {
         return flow {
-            emit(Resource.Loading())
+            emit(Resource.Loading<MoviesResponse>())
             try {
                 val response = service.getUpComingMovies(apiKey, language, 1)
                 validateResponse(response,
                     onSuccess = {
-                        emit(Resource.Success(it))
+                        emit(Resource.Success<MoviesResponse>(it))
                     },
                     onError = { errorMsg ->
-                        emit(Resource.Error(errorMsg))
+                        emit(Resource.Error<MoviesResponse>(errorMsg))
                     }
                 )
             } catch (e: Exception) {
                 validateError(e) { errorMsg, errorType ->
-                    emit(Resource.Error(errorMsg, errorType))
+                    emit(Resource.Error<MoviesResponse>(errorMsg, errorType))
                 }
             }
         }
@@ -92,15 +92,15 @@ class MoviesRemoteDataSource @Inject constructor(
                 val response = service.getTopRatedMovies(apiKey, language, 1)
                 validateResponse(response,
                     onSuccess = {
-                        emit(Resource.Success(it))
+                        emit(Resource.Success<MoviesResponse>(it))
                     },
                     onError = { errorMsg ->
-                        emit(Resource.Error(errorMsg))
+                        emit(Resource.Error<MoviesResponse>(errorMsg))
                     }
                 )
             } catch (e: Exception) {
                 validateError(e) { errorMsg, errorType ->
-                    emit(Resource.Error(errorMsg, errorType))
+                    emit(Resource.Error<MoviesResponse>(errorMsg, errorType))
                 }
             }
         }
@@ -108,20 +108,20 @@ class MoviesRemoteDataSource @Inject constructor(
 
     suspend fun getCreditMovie(movieId: Int): Flow<Resource<CreditResponse>> {
         return flow {
-            emit(Resource.Loading())
+            emit(Resource.Loading<CreditResponse>())
             try {
                 val response = service.getCreditMovie(movieId, apiKey, language)
                 validateResponse(response,
                     onSuccess = {
-                        emit(Resource.Success(it))
+                        emit(Resource.Success<CreditResponse>(it))
                     },
                     onError = { errorMsg ->
-                        emit(Resource.Error(errorMsg))
+                        emit(Resource.Error<CreditResponse>(errorMsg))
                     }
                 )
             } catch (e: Exception) {
                 validateError(e) { errorMsg, errorType ->
-                    emit(Resource.Error(errorMsg, errorType))
+                    emit(Resource.Error<CreditResponse>(errorMsg, errorType))
                 }
             }
         }
@@ -130,19 +130,19 @@ class MoviesRemoteDataSource @Inject constructor(
     suspend fun getGenreMovies(): Flow<Resource<GenresResponse>> {
         return flow {
             try {
-                emit(Resource.Loading())
+                emit(Resource.Loading<GenresResponse>())
                 val response = service.getGenreMovies(apiKey, language)
                 validateResponse(response,
                     onSuccess = {
-                        emit(Resource.Success(it))
+                        emit(Resource.Success<GenresResponse>(it))
                     },
                     onError = { errorMsg ->
-                        emit(Resource.Error(errorMsg))
+                        emit(Resource.Error<GenresResponse>(errorMsg))
                     }
                 )
             } catch (e: Exception) {
                 validateError(e) { errorMsg, errorType ->
-                    emit(Resource.Error(errorMsg, errorType))
+                    emit(Resource.Error<GenresResponse>(errorMsg, errorType))
                 }
             }
         }

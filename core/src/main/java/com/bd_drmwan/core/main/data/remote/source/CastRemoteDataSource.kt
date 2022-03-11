@@ -14,7 +14,7 @@ class CastRemoteDataSource @Inject constructor(
 
     suspend fun getPopularActors(): Flow<Resource<CastResponse>> {
         return flow {
-            emit(Resource.Loading())
+            emit(Resource.Loading<CastResponse>())
             try {
                 val response = service.getPopularCast(apiKey, language, 1)
                 validateResponse(response,
@@ -22,12 +22,12 @@ class CastRemoteDataSource @Inject constructor(
                         emit(Resource.Success(it))
                     },
                     onError = { errorMsg ->
-                        emit(Resource.Error(errorMsg))
+                        emit(Resource.Error<CastResponse>(errorMsg))
                     }
                 )
             } catch (e: Exception) {
                 validateError(e) { errorMsg, errorType ->
-                    emit(Resource.Error(errorMsg, errorType))
+                    emit(Resource.Error<CastResponse>(errorMsg, errorType))
                 }
             }
         }

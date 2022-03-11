@@ -13,7 +13,6 @@ data class MovieModel(
     val backdropUri: String?,
     val voteAverage: String?,
     val voteCount: Long?,
-    val runtime: Long?,
     val genre: List<Genre?>?
 ) : Parcelable
 

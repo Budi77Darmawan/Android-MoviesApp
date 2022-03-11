@@ -16,11 +16,11 @@ class CastRepositoryImpl @Inject constructor(
         return flow {
             remoteDataSource.getPopularActors().collect {
                 when (it) {
-                    is Resource.Loading -> emit(Resource.Loading())
-                    is Resource.Error -> emit(Resource.Error(it.message, it.errorType))
+                    is Resource.Loading -> emit(Resource.Loading<List<CastModel>>())
+                    is Resource.Error -> emit(Resource.Error<List<CastModel>>(it.message, it.errorType))
                     is Resource.Success -> {
                         val data = DataMapper.mapCastResponseToCastModel(it.data?.results)
-                        emit(Resource.Success(data))
+                        emit(Resource.Success<List<CastModel>>(data))
                     }
                 }
             }

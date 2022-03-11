@@ -1,6 +1,7 @@
 package com.bd_drmwan.moviesapp.modules
 
 import com.bd_drmwan.core.main.domain.repository.ICastRepository
+import com.bd_drmwan.core.main.domain.repository.ILocaleRepository
 import com.bd_drmwan.core.main.domain.repository.IMoviesRepository
 import com.bd_drmwan.moviesapp.presentation.detail.usecase.DetailUseCaseImpl
 import com.bd_drmwan.moviesapp.presentation.detail.usecase.IDetailUseCase
@@ -43,8 +44,9 @@ object UseCaseModule {
 
     @Provides
     fun provideDetailUseCase(
-        moviesRepository: IMoviesRepository
+        moviesRepository: IMoviesRepository,
+        localeRepository: ILocaleRepository
     ): IDetailUseCase {
-        return DetailUseCaseImpl(moviesRepository)
+        return DetailUseCaseImpl(moviesRepository, localeRepository)
     }
 }

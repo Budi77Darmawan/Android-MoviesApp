@@ -10,4 +10,6 @@
     <string name="see_all">See all</string>
     <string name="popular_actors">Popular Actors</string>
     <string name="movies_search">Search movies...</string>
+    <string name="success_add_to_favorite">Success add to favorite</string>
+    <string name="remove_from_favorite">Remove from favorite</string>
 </resources>

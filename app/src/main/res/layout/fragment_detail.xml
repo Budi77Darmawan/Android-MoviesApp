@@ -23,7 +23,7 @@
 
             <include
                 android:id="@+id/header"
-                layout="@layout/header_detail_movie"/>
+                layout="@layout/header_detail_movie" />
 
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
@@ -46,4 +46,15 @@
             layout="@layout/content_detail_movie" />
 
     </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_unfavorite"
+        app:backgroundTint="@color/white"
+        app:tint="@color/pink"
+        tools:ignore="ContentDescription" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

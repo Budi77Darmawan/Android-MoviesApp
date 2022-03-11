@@ -24,6 +24,20 @@ fun ImageView.loadImage(
         .into(this)
 }
 
+fun ImageView.loadImageCircleCrop(
+    uri: String?,
+    progressColor: Int = R.color.default_progress_color
+) {
+    val colorCompat = ContextCompat.getColor(this.context, progressColor)
+    Glide.with(this)
+        .load(uri.toString())
+        .placeholder(getProgressDrawable(this.context, colorCompat))
+        .error(R.drawable.ic_person)
+        .circleCrop()
+        .transition(DrawableTransitionOptions.withCrossFade(300))
+        .into(this)
+}
+
 fun ImageView.loadImage(drawable: Drawable?) {
     Glide.with(this)
         .load(drawable)

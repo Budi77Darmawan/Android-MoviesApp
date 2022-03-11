@@ -10,5 +10,6 @@ data class CastModel(
     val gender: Int?,
     val adult: String?,
     val popularity: String?,
+    val characterName: String?,
     val imageUri: String?
 ) : Parcelable
