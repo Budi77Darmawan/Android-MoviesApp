@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "251682344487",
+    "project_id": "android-movieapps",
+    "storage_bucket": "android-movieapps.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:251682344487:android:863f65318af576f5ed8802",
+        "android_client_info": {
+          "package_name": "com.bd_drmwan.moviesapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "251682344487-qtjo1i30gltmve2qq4qug54jj8eb2pb6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUxPsQ1KHAXnKfYB5jwZAa7a10miCr3wQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "251682344487-qtjo1i30gltmve2qq4qug54jj8eb2pb6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
