@@ -37,6 +37,8 @@
         <entry key="app/src/main/res/layout/toolbar_detail.xml" value="0.16145833333333334" />
         <entry key="common_extensions/src/main/res/drawable/ic_default_image.xml" value="0.1275" />
         <entry key="common_extensions/src/main/res/drawable/ic_person.xml" value="0.1415" />
+        <entry key="core/src/main/res/layout/container_list_movie.xml" value="0.325" />
+        <entry key="featureFavorite/src/main/res/layout/fragment_list_favorite.xml" value="0.325" />
       </map>
     </option>
   </component>

@@ -18,3 +18,4 @@ rootProject.name = "MoviesApp"
 include ':app'
 include ':common_extensions'
 include ':core'
+include ':featureFavorite'
