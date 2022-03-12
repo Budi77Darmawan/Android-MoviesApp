@@ -1,6 +1,7 @@
 package com.bd_drmwan.core.module
 
 import android.content.Context
+import com.bd_drmwan.core.BuildConfig.*
 import com.bd_drmwan.core.main.services.NetworkException
 import com.bd_drmwan.core.main.services.NetworkUtil
 import dagger.Module
@@ -8,6 +9,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.CertificatePinner
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -54,10 +56,15 @@ object NetworkModule {
 //        chuckInterceptor: ChuckInterceptor,
         networkInterceptor: Interceptor
     ): OkHttpClient {
+        val certificate = CertificatePinner.Builder()
+            .add(HOST_NAME, CERTIFICATE_PINNER_1)
+            .add(HOST_NAME, CERTIFICATE_PINNER_2)
+            .build()
         return OkHttpClient().newBuilder()
             .addInterceptor(loggingInterceptor)
 //            .addInterceptor(chuckInterceptor)
             .addInterceptor(networkInterceptor)
+            .certificatePinner(certificate)
             .build()
     }
 
