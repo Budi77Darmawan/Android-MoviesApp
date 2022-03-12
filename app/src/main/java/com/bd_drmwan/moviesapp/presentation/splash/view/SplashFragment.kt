@@ -13,6 +13,7 @@ import com.bd_drmwan.moviesapp.R
 import com.bd_drmwan.moviesapp.databinding.FragmentSplashBinding
 import com.bd_drmwan.moviesapp.presentation.splash.viewmodel.SplashViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
@@ -44,6 +45,7 @@ class SplashFragment : Fragment() {
                     is Resource.Loading -> {}
                     is Resource.Error -> {}
                     is Resource.Success -> {
+                        delay(1000)
                         findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
                     }
                 }
