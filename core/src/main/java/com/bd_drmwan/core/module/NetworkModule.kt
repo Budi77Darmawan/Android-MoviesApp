@@ -3,9 +3,7 @@ package com.bd_drmwan.core.module
 import android.content.Context
 import com.bd_drmwan.core.main.services.NetworkException
 import com.bd_drmwan.core.main.services.NetworkUtil
-import com.readystatesoftware.chuck.ChuckInterceptor
 import dagger.Module
-import javax.inject.Singleton
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -15,16 +13,17 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    @Singleton
-    @Provides
-    fun provideChuckInterceptor(
-        @ApplicationContext mContext: Context
-    ) = ChuckInterceptor(mContext)
+//    @Singleton
+//    @Provides
+//    fun provideChuckInterceptor(
+//        @ApplicationContext mContext: Context
+//    ) = ChuckInterceptor(mContext)
 
     @Singleton
     @Provides
@@ -52,12 +51,12 @@ object NetworkModule {
     @Provides
     fun provideOkhttpClient(
         loggingInterceptor: HttpLoggingInterceptor,
-        chuckInterceptor: ChuckInterceptor,
+//        chuckInterceptor: ChuckInterceptor,
         networkInterceptor: Interceptor
     ): OkHttpClient {
         return OkHttpClient().newBuilder()
             .addInterceptor(loggingInterceptor)
-            .addInterceptor(chuckInterceptor)
+//            .addInterceptor(chuckInterceptor)
             .addInterceptor(networkInterceptor)
             .build()
     }

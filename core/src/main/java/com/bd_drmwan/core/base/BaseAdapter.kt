@@ -10,9 +10,7 @@ import com.bd_drmwan.core.utils.toPx
 
 abstract class BaseAdapter<D: Any, VH: RecyclerView.ViewHolder> : RecyclerView.Adapter<VH>() {
     protected var mListData = mutableListOf<D>()
-    protected var mRecyclerView: RecyclerView? = null
-
-    protected var callbackRoot: ((D?) -> Unit)? = null
+    private var callbackRoot: ((D?) -> Unit)? = null
 
     open fun onRootClicked(callback: (D?) -> Unit) {
         callbackRoot = callback
@@ -25,18 +23,6 @@ abstract class BaseAdapter<D: Any, VH: RecyclerView.ViewHolder> : RecyclerView.A
             mListData.addAll(it)
             notifyDataSetChanged()
         }
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    open fun addData(listData: List<D>) {
-        mListData.addAll(listData.toMutableList())
-        notifyDataSetChanged()
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    open fun clearData() {
-        mListData.clear()
-        notifyDataSetChanged()
     }
 
     protected fun setupHorizontalView(adapterPosition: Int, rootView: View, mContext: Context) {
@@ -74,10 +60,5 @@ abstract class BaseAdapter<D: Any, VH: RecyclerView.ViewHolder> : RecyclerView.A
         holder.itemView.setOnClickListener {
             callbackRoot?.invoke(mListData.getOrNull(position))
         }
-    }
-
-    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
-        super.onAttachedToRecyclerView(recyclerView)
-        mRecyclerView = recyclerView
     }
 }
