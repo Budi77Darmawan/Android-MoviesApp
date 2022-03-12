@@ -5,40 +5,43 @@
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.2361111111111111" />
         <entry key="app/src/main/res/drawable-v24/background_rounded_10dp.xml" value="0.1275" />
+        <entry key="app/src/main/res/drawable-v24/bottom_shadow.xml" value="0.1275" />
         <entry key="app/src/main/res/drawable-v24/ic_cancel_search.xml" value="0.1275" />
         <entry key="app/src/main/res/drawable-v24/ic_search_bar.xml" value="0.1275" />
         <entry key="app/src/main/res/drawable/bg_rounded.xml" value="0.1275" />
         <entry key="app/src/main/res/drawable/bg_rounded_10dp.xml" value="0.1275" />
+        <entry key="app/src/main/res/drawable/bottom_shadow.xml" value="0.1275" />
         <entry key="app/src/main/res/drawable/ic_arrow_back.xml" value="0.1275" />
         <entry key="app/src/main/res/drawable/ic_cancel_search.xml" value="0.1275" />
         <entry key="app/src/main/res/drawable/ic_more.xml" value="0.1275" />
         <entry key="app/src/main/res/drawable/ic_right_arrow_second_12dp.xml" value="0.1275" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.1275" />
         <entry key="app/src/main/res/drawable/ic_search_bar.xml" value="0.1275" />
-        <entry key="app/src/main/res/drawable/ic_unfavorite.xml" value="0.202" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.125" />
         <entry key="app/src/main/res/layout/container_banner_home.xml" value="0.3885819521178637" />
         <entry key="app/src/main/res/layout/container_item_grid_actors.xml" value="0.2703125" />
         <entry key="app/src/main/res/layout/container_item_grid_movies.xml" value="0.2703125" />
-        <entry key="app/src/main/res/layout/container_item_list_cast.xml" value="0.33697916666666666" />
+        <entry key="app/src/main/res/layout/container_list_movie.xml" value="0.2703125" />
         <entry key="app/src/main/res/layout/container_search_bar.xml" value="0.40344168260038243" />
-        <entry key="app/src/main/res/layout/content_detail_movie.xml" value="0.33697916666666666" />
+        <entry key="app/src/main/res/layout/content_detail_movie.xml" value="0.2703125" />
         <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.2703125" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_list_movies.xml" value="0.2703125" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.28542785644531254" />
+        <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.2703125" />
         <entry key="app/src/main/res/layout/generic_toolbar.xml" value="0.2703125" />
-        <entry key="app/src/main/res/layout/header_detail_movie.xml" value="0.33697916666666666" />
+        <entry key="app/src/main/res/layout/header_detail_movie.xml" value="0.2703125" />
         <entry key="app/src/main/res/layout/item_grid_horizontal_actor.xml" value="0.2703125" />
         <entry key="app/src/main/res/layout/item_grid_horizontal_movie.xml" value="0.2703125" />
         <entry key="app/src/main/res/layout/layout_banner_home.xml" value="0.2703125" />
         <entry key="app/src/main/res/layout/shimmer_banner_home.xml" value="0.2703125" />
         <entry key="app/src/main/res/layout/shimmer_grid_actor.xml" value="0.2703125" />
         <entry key="app/src/main/res/layout/shimmer_grid_movie.xml" value="0.2703125" />
-        <entry key="app/src/main/res/layout/toolbar_detail.xml" value="0.16145833333333334" />
+        <entry key="app/src/main/res/layout/toolbar_detail.xml" value="0.2703125" />
         <entry key="common_extensions/src/main/res/drawable/ic_default_image.xml" value="0.1275" />
-        <entry key="common_extensions/src/main/res/drawable/ic_person.xml" value="0.1415" />
-        <entry key="core/src/main/res/layout/container_list_movie.xml" value="0.325" />
-        <entry key="featureFavorite/src/main/res/layout/fragment_list_favorite.xml" value="0.325" />
+        <entry key="featureFavorite/src/main/res/layout/fragment_list_favorite.xml" value="0.2703125" />
+        <entry key="featureFavorite/src/main/res/layout/toolbar.xml" value="0.2703125" />
+        <entry key="featureFavorite/src/main/res/layout/toolbar_favorite.xml" value="0.125" />
       </map>
     </option>
   </component>

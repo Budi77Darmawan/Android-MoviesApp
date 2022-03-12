@@ -9,9 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.bd_drmwan.common_extensions.gone
 import com.bd_drmwan.common_extensions.verticalLinearLayoutManager
 import com.bd_drmwan.common_extensions.visible
 import com.bd_drmwan.core.main.vo.Resource
+import com.bd_drmwan.featurefavorite.R
 import com.bd_drmwan.featurefavorite.databinding.FragmentListFavoriteBinding
 import com.bd_drmwan.featurefavorite.di.DaggerFavoriteComponent
 import com.bd_drmwan.featurefavorite.viewmodel.FavoriteViewModel
@@ -63,16 +65,22 @@ class ListFavoriteFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initToolbar()
+        setupRecyclerMovies()
 
         viewLifecycleOwner.lifecycleScope.launchWhenResumed {
             viewModel.getFavoriteMovies().collect {
                 when (it) {
                     is Resource.Success -> {
-                        binding?.rvMovies?.apply {
-                            adapter = adapterMovie
-                            layoutManager = verticalLinearLayoutManager()
+                        if (it.data?.isNullOrEmpty() == true) {
+                            binding?.animEmpty?.playAnimation()
+                            binding?.animEmpty?.visible()
+                            binding?.rvMovies?.gone()
+                        } else {
+                            binding?.animEmpty?.pauseAnimation()
+                            binding?.animEmpty?.gone()
+                            binding?.rvMovies?.visible()
+                            adapterMovie.setData(it.data)
                         }
-                        adapterMovie.setData(it.data)
                     }
                     else -> Unit
                 }
@@ -80,8 +88,24 @@ class ListFavoriteFragment : Fragment() {
         }
     }
 
-    private fun initToolbar() {
+    private fun setupRecyclerMovies() {
+        binding?.rvMovies?.apply {
+            adapter = adapterMovie
+            layoutManager = verticalLinearLayoutManager()
+        }
+        adapterMovie.onRootClicked {
+            val toDetail =
+                ListFavoriteFragmentDirections.actionListFavoriteFragmentToDetailFragment(it, true)
+            findNavController().navigate(toDetail)
+        }
+    }
 
+    private fun initToolbar() {
+        binding?.toolbar?.apply {
+            tvTitle.text = getString(R.string.favorite)
+            icBack.visible()
+            icBack.setOnClickListener { findNavController().popBackStack() }
+        }
     }
 
 }

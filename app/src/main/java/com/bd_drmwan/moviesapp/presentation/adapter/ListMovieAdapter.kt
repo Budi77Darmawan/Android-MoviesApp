@@ -8,26 +8,29 @@ import com.bd_drmwan.core.base.BaseAdapter
 import com.bd_drmwan.core.main.domain.model.MovieModel
 import com.bd_drmwan.moviesapp.databinding.ContainerListMovieBinding
 
-class ListMovieAdapter: BaseAdapter<MovieModel, ListMovieAdapter.ViewHolder>() {
+class ListMovieAdapter : BaseAdapter<MovieModel, ListMovieAdapter.ViewHolder>() {
 
-    inner class ViewHolder(private val binding: ContainerListMovieBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ContainerListMovieBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: MovieModel?) {
             binding.apply {
                 imgMovie.loadImage(movie?.posterUri, 10)
-                tvTitle.text = movie?.title
-                tvOverview.text = movie?.overview
-                tvGenre.text = movie?.genre?.map { it?.name }?.joinToString(", ")
+                val title = "${movie?.title} (${movie?.releaseDate?.take(4) ?: "-"})"
+                tvTitle.text = title
+                tvOverview.text = movie?.overview ?: "No Description"
+                tvGenre.text = movie?.genre?.map { it?.name }?.joinToString(", ") ?: "-"
             }
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ContainerListMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ContainerListMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        super.onBindViewHolder(holder, position)
         holder.bind(mListData.getOrNull(position))
     }
 

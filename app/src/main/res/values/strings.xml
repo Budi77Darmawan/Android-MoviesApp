@@ -13,4 +13,6 @@
     <string name="success_add_to_favorite">Success add to favorite</string>
     <string name="remove_from_favorite">Remove from favorite</string>
     <string name="title_featurefavorite">featureFavorite</string>
+    <string name="cast">Cast</string>
+    <string name="plot_summary">Plot Summary</string>
 </resources>

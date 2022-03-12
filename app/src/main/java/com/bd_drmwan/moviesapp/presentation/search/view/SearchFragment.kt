@@ -70,7 +70,6 @@ class SearchFragment : Fragment() {
                     it?.let { query ->
                         if (query.trim().isNotEmpty()) {
                             viewModel.searchMovies(query)
-                            toast(query)
                         }
                     }
                 })
@@ -101,7 +100,7 @@ class SearchFragment : Fragment() {
         binding?.apply {
             rvMovies.gone()
             searchAnimation.visible()
-            searchAnimation.setAnimation(R.raw.not_found)
+            searchAnimation.setAnimation(R.raw.empty_box)
             searchAnimation.playAnimation()
         }
     }

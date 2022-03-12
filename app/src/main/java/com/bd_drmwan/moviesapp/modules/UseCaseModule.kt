@@ -7,6 +7,8 @@ import com.bd_drmwan.moviesapp.presentation.detail.usecase.DetailUseCaseImpl
 import com.bd_drmwan.moviesapp.presentation.detail.usecase.IDetailUseCase
 import com.bd_drmwan.moviesapp.presentation.home.usecase.HomeUseCaseImpl
 import com.bd_drmwan.moviesapp.presentation.home.usecase.IHomeUseCase
+import com.bd_drmwan.moviesapp.presentation.list.usecase.IListMoviesUseCase
+import com.bd_drmwan.moviesapp.presentation.list.usecase.ListMoviesUseCaseImpl
 import com.bd_drmwan.moviesapp.presentation.search.usecase.ISearchUseCase
 import com.bd_drmwan.moviesapp.presentation.search.usecase.SearchUseCaseImpl
 import com.bd_drmwan.moviesapp.presentation.splash.usecase.ISplashUseCase
@@ -48,5 +50,12 @@ object UseCaseModule {
         localeRepository: ILocaleRepository
     ): IDetailUseCase {
         return DetailUseCaseImpl(moviesRepository, localeRepository)
+    }
+
+    @Provides
+    fun provideListMoviesUseCase(
+        moviesRepository: IMoviesRepository
+    ): IListMoviesUseCase {
+        return ListMoviesUseCaseImpl(moviesRepository)
     }
 }

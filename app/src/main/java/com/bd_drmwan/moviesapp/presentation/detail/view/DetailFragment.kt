@@ -41,6 +41,7 @@ class DetailFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        toast?.cancel()
         _binding = null
     }
 

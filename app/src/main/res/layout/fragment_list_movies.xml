@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:paddingTop="@dimen/status_bar_height"
-    tools:context=".view.ListFavoriteFragment">
+    tools:context=".presentation.list.view.ListMoviesFragment">
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar_favorite"
+        layout="@layout/generic_toolbar"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -23,19 +23,5 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         tools:itemCount="3"
         tools:listitem="@layout/container_list_movie" />
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/anim_empty"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="40dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/empty_box" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

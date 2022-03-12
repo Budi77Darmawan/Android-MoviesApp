@@ -57,9 +57,12 @@ class HomeFragment : Fragment() {
         binding?.toolbar?.apply {
             tvTitle.text = getString(R.string.discover)
             icBack.gone()
-            icUtilToolbar.visible()
-            icUtilToolbar.setOnClickListener {
-//                findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+            icSearchToolbar.visible()
+            icSearchToolbar.setOnClickListener {
+                findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+            }
+            icFavoriteToolbar.visible()
+            icFavoriteToolbar.setOnClickListener {
                 findNavController().navigate(R.id.action_homeFragment_to_listFavoriteFragment)
             }
         }
@@ -97,6 +100,12 @@ class HomeFragment : Fragment() {
             tvTypeMovies.text = moviesType.value
             rvMovies.adapter = gridAdapter
             rvMovies.layoutManager = horizontalLinearLayoutManager()
+
+            btnSeeAll.setOnClickListener {
+                val toList =
+                    HomeFragmentDirections.actionHomeFragmentToListMoviesFragment(moviesType)
+                findNavController().navigate(toList)
+            }
         }
     }
 
@@ -108,6 +117,7 @@ class HomeFragment : Fragment() {
         }
 
         binding?.layoutPopularActors?.apply {
+            btnSeeAll.gone()
             viewGroup.visible()
             rvActors.adapter = gridAdapter
             rvActors.layoutManager = horizontalLinearLayoutManager()

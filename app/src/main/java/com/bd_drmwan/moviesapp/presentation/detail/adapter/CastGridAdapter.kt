@@ -9,9 +9,10 @@ import com.bd_drmwan.core.main.domain.model.CastModel
 import com.bd_drmwan.moviesapp.databinding.ContainerItemListCastBinding
 
 
-class CastGridAdapter: BaseAdapter<CastModel, CastGridAdapter.ViewHolder>() {
+class CastGridAdapter : BaseAdapter<CastModel, CastGridAdapter.ViewHolder>() {
 
-    inner class ViewHolder(private val binding: ContainerItemListCastBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ContainerItemListCastBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(cast: CastModel?) {
             binding.apply {
                 imgCast.loadImageCircleCrop(cast?.imageUri)
@@ -22,11 +23,13 @@ class CastGridAdapter: BaseAdapter<CastModel, CastGridAdapter.ViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ContainerItemListCastBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ContainerItemListCastBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        super.onBindViewHolder(holder, position)
         holder.bind(mListData.getOrNull(position))
     }
 }

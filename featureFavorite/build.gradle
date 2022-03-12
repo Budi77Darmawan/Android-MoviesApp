@@ -1,15 +1,15 @@
 plugins {
     id 'com.android.dynamic-feature'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-parcelize'
     id 'kotlin-kapt'
+    id 'kotlin-parcelize'
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
 }
 apply from: '../shared_dependencies.gradle'
 
 android {
-    compileSdk 32
+    compileSdk 31
 
     defaultConfig {
         minSdk 23

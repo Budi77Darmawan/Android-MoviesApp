@@ -13,13 +13,6 @@ class GridActorsAdapter : BaseAdapter<CastModel, GridActorsAdapter.ViewHolder>()
 
     inner class ViewHolder(private val binding: ItemGridHorizontalActorBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
-        init {
-            binding.root.setOnClickListener {
-                callbackRoot?.invoke(mListData.getOrNull(bindingAdapterPosition))
-            }
-        }
-
         fun setupView(cast: CastModel?) {
             with(binding) {
                 setupHorizontalView(bindingAdapterPosition, root, root.context)
@@ -40,6 +33,7 @@ class GridActorsAdapter : BaseAdapter<CastModel, GridActorsAdapter.ViewHolder>()
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        super.onBindViewHolder(holder, position)
         val actor = mListData.getOrNull(position)
         holder.setupView(actor)
     }

@@ -16,13 +16,6 @@ class MoviesAdapter(
 
     inner class ViewHolder(private val binding: ItemGridHorizontalMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
-        init {
-            binding.root.setOnClickListener {
-                callbackRoot?.invoke(mListData.getOrNull(bindingAdapterPosition))
-            }
-        }
-
         fun setupView(movie: MovieModel?) {
             with(binding) {
                 if (isLinearLayout) {
@@ -55,6 +48,7 @@ class MoviesAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        super.onBindViewHolder(holder, position)
         val movie = mListData.getOrNull(position)
         holder.setupView(movie)
     }

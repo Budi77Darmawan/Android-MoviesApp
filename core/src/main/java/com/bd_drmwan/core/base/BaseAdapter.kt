@@ -70,6 +70,12 @@ abstract class BaseAdapter<D: Any, VH: RecyclerView.ViewHolder> : RecyclerView.A
         return mListData.size
     }
 
+    override fun onBindViewHolder(holder: VH, position: Int) {
+        holder.itemView.setOnClickListener {
+            callbackRoot?.invoke(mListData.getOrNull(position))
+        }
+    }
+
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
         mRecyclerView = recyclerView
