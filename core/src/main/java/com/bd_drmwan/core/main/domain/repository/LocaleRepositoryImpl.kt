@@ -30,7 +30,7 @@ class LocaleRepositoryImpl @Inject constructor(
                     val model = data.map { movie -> DataMapper.mapEntityToModel(movie) }
                     emit(Resource.Success(model.filterNotNull()))
                 } ?: run {
-                    emit(Resource.Success(listOf<MovieModel>()))
+                    emit(Resource.Success(listOf()))
                 }
             }
         }
@@ -41,7 +41,7 @@ class LocaleRepositoryImpl @Inject constructor(
             emit(Resource.Loading())
             localeDataSource.getMovie(movieId).collect {
                 val model = DataMapper.mapEntityToModel(it)
-                emit(Resource.Success<MovieModel?>(model))
+                emit(Resource.Success(model))
             }
         }
     }

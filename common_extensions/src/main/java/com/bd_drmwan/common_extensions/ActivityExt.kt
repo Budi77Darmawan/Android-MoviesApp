@@ -1,14 +1,10 @@
 package com.bd_drmwan.common_extensions
 
 import android.app.Activity
-import android.content.Context
 import android.graphics.Color
 import android.os.Build
 import android.view.View
 import android.view.WindowManager
-import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
-import androidx.core.content.ContextCompat
 
 
 fun Activity.makeStatusBarTransparent() {
@@ -23,27 +19,4 @@ fun Activity.makeStatusBarTransparent() {
             statusBarColor = Color.TRANSPARENT
         }
     }
-}
-
-fun Activity.resetStatusBarColor(color: Int) {
-    window.apply {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            setDecorFitsSystemWindows(true)
-            statusBarColor = ContextCompat.getColor(this@resetStatusBarColor, color)
-        } else {
-            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
-            statusBarColor = ContextCompat.getColor(this@resetStatusBarColor, color)
-        }
-    }
-}
-
-fun Activity.toast(message: String? = getString(R.string.default_message_toast)) =
-    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-
-fun Activity.toastLong(message: String? = getString(R.string.default_message_toast)) =
-    Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-
-fun Activity.hideSoftKeyboard(mView: View) {
-    val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
-    imm?.hideSoftInputFromWindow(mView.windowToken, 0)
 }

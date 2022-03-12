@@ -19,11 +19,11 @@ class MoviesRepositoryImpl @Inject constructor(
         return flow {
             remoteDataSource.getMovies(moviesType).collect {
                 when (it) {
-                    is Resource.Loading -> emit(Resource.Loading<List<MovieModel>>())
-                    is Resource.Error -> emit(Resource.Error<List<MovieModel>>(it.message, it.errorType))
+                    is Resource.Loading -> emit(Resource.Loading())
+                    is Resource.Error -> emit(Resource.Error(it.message, it.errorType))
                     is Resource.Success -> {
                         val data = DataMapper.mapMoviesResponseToMoviesModel(it.data)
-                        emit(Resource.Success<List<MovieModel>>(data))
+                        emit(Resource.Success(data))
                     }
                 }
             }
@@ -34,11 +34,11 @@ class MoviesRepositoryImpl @Inject constructor(
         return flow {
             remoteDataSource.searchMovies(title).collect {
                 when (it) {
-                    is Resource.Loading -> emit(Resource.Loading<List<MovieModel>>())
-                    is Resource.Error -> emit(Resource.Error<List<MovieModel>>(it.message, it.errorType))
+                    is Resource.Loading -> emit(Resource.Loading())
+                    is Resource.Error -> emit(Resource.Error(it.message, it.errorType))
                     is Resource.Success -> {
                         val data = DataMapper.mapMoviesResponseToMoviesModel(it.data)
-                        emit(Resource.Success<List<MovieModel>>(data))
+                        emit(Resource.Success(data))
                     }
                 }
             }
@@ -49,11 +49,11 @@ class MoviesRepositoryImpl @Inject constructor(
         return flow {
             remoteDataSource.getCreditMovie(movieId).collect {
                 when (it) {
-                    is Resource.Loading -> emit(Resource.Loading<List<CastModel>>())
-                    is Resource.Error -> emit(Resource.Error<List<CastModel>>(it.message, it.errorType))
+                    is Resource.Loading -> emit(Resource.Loading())
+                    is Resource.Error -> emit(Resource.Error(it.message, it.errorType))
                     is Resource.Success -> {
                         val data = DataMapper.mapCastResponseToCastModel(it.data?.cast)
-                        emit(Resource.Success<List<CastModel>>(data))
+                        emit(Resource.Success(data))
                     }
                 }
             }
@@ -64,11 +64,11 @@ class MoviesRepositoryImpl @Inject constructor(
         return flow {
             remoteDataSource.getGenreMovies().collect {
                 when (it) {
-                    is Resource.Loading -> emit(Resource.Loading<Any?>())
-                    is Resource.Error -> emit(Resource.Error<Any?>(it.message, it.errorType))
+                    is Resource.Loading -> emit(Resource.Loading())
+                    is Resource.Error -> emit(Resource.Error(it.message, it.errorType))
                     is Resource.Success -> {
                         Genres.setData(it.data?.genres)
-                        emit(Resource.Success<Any?>(null))
+                        emit(Resource.Success(null))
                     }
                 }
             }

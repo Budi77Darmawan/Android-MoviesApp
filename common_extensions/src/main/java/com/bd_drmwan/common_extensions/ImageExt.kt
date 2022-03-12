@@ -1,7 +1,6 @@
 package com.bd_drmwan.common_extensions
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
@@ -35,18 +34,6 @@ fun ImageView.loadImageCircleCrop(
         .error(R.drawable.ic_person)
         .circleCrop()
         .transition(DrawableTransitionOptions.withCrossFade(300))
-        .into(this)
-}
-
-fun ImageView.loadImage(drawable: Drawable?) {
-    Glide.with(this)
-        .load(drawable)
-        .into(this)
-}
-
-fun ImageView.loadImage(drawable: Int?) {
-    Glide.with(this)
-        .load(drawable)
         .into(this)
 }
 
