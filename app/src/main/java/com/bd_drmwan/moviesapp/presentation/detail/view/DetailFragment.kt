@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -12,8 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.bd_drmwan.common_extensions.horizontalLinearLayoutManager
-import com.bd_drmwan.common_extensions.loadImage
+import com.bd_drmwan.common_extensions.*
 import com.bd_drmwan.core.main.domain.model.CastModel
 import com.bd_drmwan.core.main.vo.Resource
 import com.bd_drmwan.core.utils.setSafeOnClickListener
@@ -22,6 +20,7 @@ import com.bd_drmwan.moviesapp.databinding.FragmentDetailBinding
 import com.bd_drmwan.moviesapp.presentation.detail.adapter.CastGridAdapter
 import com.bd_drmwan.moviesapp.presentation.detail.viewmodel.DetailViewModel
 import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlin.math.abs
@@ -36,12 +35,10 @@ class DetailFragment : Fragment() {
 
     private val castAdapter by lazy { CastGridAdapter() }
     private var isFavorite = false
-    private var toast: Toast? = null
-    private var showToast = false
+    private var showSnackBar = false
 
     override fun onDestroyView() {
         super.onDestroyView()
-        toast?.cancel()
         _binding = null
     }
 
@@ -111,12 +108,10 @@ class DetailFragment : Fragment() {
             )
         )
 
-        if (showToast) {
-            toast?.cancel()
-            toast = Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT)
-            toast?.show()
+        if (showSnackBar) {
+            binding?.root?.let { Snackbar.make(it, message, Snackbar.LENGTH_SHORT).show() }
         }
-        showToast = true
+        showSnackBar = true
     }
 
     private fun setRecyclerCast(data: List<CastModel>?) {
