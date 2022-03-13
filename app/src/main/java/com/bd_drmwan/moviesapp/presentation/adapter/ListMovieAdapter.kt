@@ -31,6 +31,13 @@ class ListMovieAdapter : ListAdapter<MovieModel, ListMovieAdapter.ViewHolder>(di
 
     inner class ViewHolder(private val binding: ContainerListMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.root.setOnClickListener {
+                callback?.invoke(getItem(bindingAdapterPosition))
+            }
+        }
+
         fun bind(movie: MovieModel?) {
             binding.apply {
                 imgMovie.loadImage(movie?.posterUri, 10)
