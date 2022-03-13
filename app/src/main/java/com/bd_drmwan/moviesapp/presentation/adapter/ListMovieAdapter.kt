@@ -2,13 +2,32 @@ package com.bd_drmwan.moviesapp.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bd_drmwan.common_extensions.loadImage
-import com.bd_drmwan.core.base.BaseAdapter
 import com.bd_drmwan.core.main.domain.model.MovieModel
 import com.bd_drmwan.moviesapp.databinding.ContainerListMovieBinding
 
-class ListMovieAdapter : BaseAdapter<MovieModel, ListMovieAdapter.ViewHolder>() {
+class ListMovieAdapter : ListAdapter<MovieModel, ListMovieAdapter.ViewHolder>(diffUtilCallback) {
+
+    private var callback: ((MovieModel?) -> Unit)? = null
+
+    fun onRootClicked(callback: (MovieModel?) -> Unit) {
+        this.callback = callback
+    }
+
+    companion object {
+        val diffUtilCallback = object : DiffUtil.ItemCallback<MovieModel>() {
+            override fun areItemsTheSame(oldItem: MovieModel, newItem: MovieModel): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: MovieModel, newItem: MovieModel): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
 
     inner class ViewHolder(private val binding: ContainerListMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -30,8 +49,11 @@ class ListMovieAdapter : BaseAdapter<MovieModel, ListMovieAdapter.ViewHolder>() 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        super.onBindViewHolder(holder, position)
-        holder.bind(mListData.getOrNull(position))
+        holder.bind(getItem(position))
+    }
+
+    override fun submitList(list: MutableList<MovieModel>?) {
+        super.submitList(list?.map { it.copy() })
     }
 
 }

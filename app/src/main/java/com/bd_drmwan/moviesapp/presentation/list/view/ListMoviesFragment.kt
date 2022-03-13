@@ -27,8 +27,8 @@ class ListMoviesFragment : Fragment() {
     private val args by navArgs<ListMoviesFragmentArgs>()
     private val adapterMovie by lazy { ListMovieAdapter() }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    override fun onDestroy() {
+        super.onDestroy()
         _binding = null
     }
 
@@ -57,7 +57,7 @@ class ListMoviesFragment : Fragment() {
                             adapter = adapterMovie
                             layoutManager = verticalLinearLayoutManager()
                         }
-                        adapterMovie.setData(it.data)
+                        adapterMovie.submitList(it.data?.toMutableList())
                         adapterMovie.onRootClicked { movie ->
                             val toDetail =
                                 ListMoviesFragmentDirections.actionListMoviesFragmentToDetailFragment(

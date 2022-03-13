@@ -37,8 +37,8 @@ class DetailFragment : Fragment() {
     private var isFavorite = false
     private var showSnackBar = false
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    override fun onDestroy() {
+        super.onDestroy()
         _binding = null
     }
 

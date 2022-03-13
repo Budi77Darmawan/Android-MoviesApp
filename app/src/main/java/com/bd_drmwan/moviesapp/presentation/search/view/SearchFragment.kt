@@ -30,8 +30,8 @@ class SearchFragment : Fragment() {
     private val viewModel: SearchViewModel by viewModels()
     private val moviesAdapter by lazy { MoviesAdapter() }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    override fun onDestroy() {
+        super.onDestroy()
         _binding = null
     }
 
@@ -123,7 +123,7 @@ class SearchFragment : Fragment() {
                                 rvMovies.visible()
                                 searchAnimation.gone()
                                 searchAnimation.pauseAnimation()
-                                moviesAdapter.setData(it.data)
+                                moviesAdapter.submitList(it.data?.toMutableList())
                             }
                         }
                         else -> Unit

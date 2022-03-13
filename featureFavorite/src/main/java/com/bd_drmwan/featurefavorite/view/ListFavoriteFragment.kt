@@ -34,8 +34,8 @@ class ListFavoriteFragment : Fragment() {
     private val viewModel: FavoriteViewModel by viewModels { factory }
     private val adapterMovie by lazy { ListMovieAdapter() }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    override fun onDestroy() {
+        super.onDestroy()
         _binding = null
     }
 
@@ -79,7 +79,7 @@ class ListFavoriteFragment : Fragment() {
                             binding?.animEmpty?.pauseAnimation()
                             binding?.animEmpty?.gone()
                             binding?.rvMovies?.visible()
-                            adapterMovie.setData(it.data)
+                            adapterMovie.submitList(it.data?.toMutableList())
                         }
                     }
                     else -> Unit

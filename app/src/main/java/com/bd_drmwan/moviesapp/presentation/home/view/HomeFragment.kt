@@ -33,8 +33,8 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModels()
     private val bannerAdapter by lazy { BannerAdapter() }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    override fun onDestroy() {
+        super.onDestroy()
         _binding = null
     }
 
@@ -89,7 +89,7 @@ class HomeFragment : Fragment() {
         movies: List<MovieModel>?
     ) {
         val gridAdapter = MoviesAdapter(true)
-        gridAdapter.setData(movies?.take(7))
+        gridAdapter.submitList(movies?.take(7)?.toMutableList())
         gridAdapter.onRootClicked {
             val toDetail = HomeFragmentDirections.actionHomeFragmentToDetailFragment(it)
             findNavController().navigate(toDetail)
