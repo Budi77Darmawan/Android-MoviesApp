@@ -9,7 +9,8 @@
     android:paddingHorizontal="15dp"
     android:paddingTop="5dp"
     android:paddingBottom="10dp"
-    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+    tools:ignore="Overdraw">
 
     <TextView
         android:id="@+id/textView_content"
