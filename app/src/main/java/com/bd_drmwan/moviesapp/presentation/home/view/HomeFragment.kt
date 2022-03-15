@@ -21,7 +21,6 @@ import com.bd_drmwan.moviesapp.presentation.home.adapter.GridActorsAdapter
 import com.bd_drmwan.moviesapp.presentation.home.adapter.MoviesAdapter
 import com.bd_drmwan.moviesapp.presentation.home.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import io.github.vejei.viewpagerindicator.indicator.CircleIndicator
 import kotlinx.coroutines.flow.collect
 import java.util.concurrent.TimeUnit
 
@@ -74,11 +73,6 @@ class HomeFragment : Fragment() {
             adapter = bannerAdapter
             start(5, TimeUnit.SECONDS)
 
-            binding?.indicatorBanner?.let {
-                it.setWithViewPager2(this.viewPager2, false)
-                it.setAnimationMode(CircleIndicator.AnimationMode.SCALE)
-                it.itemCount = numOfBanners
-            }
         }
         bannerAdapter.setData(movies?.take(numOfBanners))
     }
