@@ -9,6 +9,7 @@ interface IHomeUseCase {
     suspend fun getUpComingMovies(): Flow<Resource<List<MovieModel>>>
     suspend fun getNowPlaying(): Flow<Resource<List<MovieModel>>>
     suspend fun getTopRatedMovies(): Flow<Resource<List<MovieModel>>>
+    suspend fun getPopularMovies(): Flow<Resource<List<MovieModel>>>
 
     suspend fun getPopularActors(): Flow<Resource<List<CastModel>>>
 }

@@ -30,7 +30,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <include
-                android:id="@+id/layout_popular_movies"
+                android:id="@+id/layout_now_playing_movies"
                 layout="@layout/container_item_grid_movies"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,7 +43,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                app:layout_constraintTop_toBottomOf="@id/layout_popular_movies" />
+                app:layout_constraintTop_toBottomOf="@id/layout_now_playing_movies" />
+
+            <include
+                android:id="@+id/layout_popular_movies"
+                layout="@layout/container_item_grid_movies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:layout_constraintTop_toBottomOf="@id/layout_top_rated_movies" />
 
             <include
                 android:id="@+id/layout_popular_actors"
@@ -51,7 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                app:layout_constraintTop_toBottomOf="@id/layout_top_rated_movies" />
+                app:layout_constraintTop_toBottomOf="@id/layout_popular_movies" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

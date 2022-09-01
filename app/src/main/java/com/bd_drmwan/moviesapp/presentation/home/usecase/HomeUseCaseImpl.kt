@@ -25,6 +25,10 @@ class HomeUseCaseImpl @Inject constructor(
         return moviesRepository.getMovies(MoviesType.TOP_RATED)
     }
 
+    override suspend fun getPopularMovies(): Flow<Resource<List<MovieModel>>> {
+        return moviesRepository.getMovies(MoviesType.POPULAR)
+    }
+
     override suspend fun getPopularActors(): Flow<Resource<List<CastModel>>> {
         return castRepository.getPopularActors()
     }

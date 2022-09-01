@@ -25,7 +25,7 @@
         <entry key="app/src/main/res/layout/container_search_bar.xml" value="0.40344168260038243" />
         <entry key="app/src/main/res/layout/content_detail_movie.xml" value="0.2703125" />
         <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.2703125" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2703125" />
         <entry key="app/src/main/res/layout/fragment_list_movies.xml" value="0.2703125" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.28542785644531254" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.2703125" />

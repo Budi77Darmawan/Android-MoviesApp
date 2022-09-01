@@ -111,7 +111,7 @@ class HomeFragment : Fragment() {
         }
 
         binding?.layoutPopularActors?.apply {
-            btnSeeAll.gone()
+            btnSeeAll.invisible()
             viewGroup.visible()
             rvActors.adapter = gridAdapter
             rvActors.layoutManager = horizontalLinearLayoutManager()
@@ -138,7 +138,7 @@ class HomeFragment : Fragment() {
         }
 
         viewLifecycleOwner.lifecycleScope.launchWhenResumed {
-            viewModel.nowPlayingMovies.collect {
+            viewModel.popularMovies.collect {
                 when (it) {
                     is Resource.Loading -> {
                         binding?.layoutPopularMovies?.shimmer?.root?.visible()
@@ -150,6 +150,28 @@ class HomeFragment : Fragment() {
                         binding?.layoutPopularMovies?.shimmer?.root?.gone()
                         setupRecyclerViewMovies(
                             binding?.layoutPopularMovies,
+                            MoviesType.POPULAR,
+                            it.data
+                        )
+                    }
+                    else -> Unit
+                }
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launchWhenResumed {
+            viewModel.nowPlayingMovies.collect {
+                when (it) {
+                    is Resource.Loading -> {
+                        binding?.layoutNowPlayingMovies?.shimmer?.root?.visible()
+                    }
+                    is Resource.Error -> {
+                        binding?.layoutNowPlayingMovies?.shimmer?.root?.gone()
+                    }
+                    is Resource.Success -> {
+                        binding?.layoutNowPlayingMovies?.shimmer?.root?.gone()
+                        setupRecyclerViewMovies(
+                            binding?.layoutNowPlayingMovies,
                             MoviesType.NOW_PLAYING,
                             it.data
                         )

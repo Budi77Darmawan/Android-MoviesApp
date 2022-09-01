@@ -19,17 +19,20 @@ class HomeViewModel @Inject constructor(
     private val _nowPlayingMovies = MutableStateFlow<Resource<List<MovieModel>>?>(null)
     private val _upComingMovies = MutableStateFlow<Resource<List<MovieModel>>?>(null)
     private val _topRatedMovies = MutableStateFlow<Resource<List<MovieModel>>?>(null)
+    private val _popularMovies = MutableStateFlow<Resource<List<MovieModel>>?>(null)
     private val _popularActors = MutableStateFlow<Resource<List<CastModel>>?>(null)
 
     val nowPlayingMovies get() = _nowPlayingMovies.asStateFlow()
     val upComingMovies get() = _upComingMovies.asStateFlow()
     val topRatedMovies get() = _topRatedMovies.asStateFlow()
+    val popularMovies get() = _popularMovies.asStateFlow()
     val popularActors get() = _popularActors.asStateFlow()
 
     init {
         getUpComingMovies()
         getNowPlayingMovies()
         getTopRatedMovies()
+        getPopularMovies()
         getPopularActors()
     }
 
@@ -53,6 +56,14 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             useCase.getTopRatedMovies().collect {
                 _topRatedMovies.emit(it)
+            }
+        }
+    }
+
+    private fun getPopularMovies() {
+        viewModelScope.launch {
+            useCase.getPopularMovies().collect {
+                _popularMovies.emit(it)
             }
         }
     }
