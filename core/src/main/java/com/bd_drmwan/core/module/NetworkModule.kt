@@ -4,6 +4,8 @@ import android.content.Context
 import com.bd_drmwan.core.BuildConfig.*
 import com.bd_drmwan.core.main.services.NetworkException
 import com.bd_drmwan.core.main.services.NetworkUtil
+import com.chuckerteam.chucker.api.ChuckerCollector
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,11 +23,16 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-//    @Singleton
-//    @Provides
-//    fun provideChuckInterceptor(
-//        @ApplicationContext mContext: Context
-//    ) = ChuckInterceptor(mContext)
+    @Singleton
+    @Provides
+    fun provideChuckInterceptor(
+        @ApplicationContext mContext: Context
+    ) = ChuckerInterceptor.Builder(mContext)
+        .collector(ChuckerCollector(mContext))
+        .maxContentLength(250000L)
+        .redactHeaders(emptySet())
+        .alwaysReadResponseBody(false)
+        .build()
 
     @Singleton
     @Provides
@@ -53,7 +60,7 @@ object NetworkModule {
     @Provides
     fun provideOkhttpClient(
         loggingInterceptor: HttpLoggingInterceptor,
-//        chuckInterceptor: ChuckInterceptor,
+        chuckInterceptor: ChuckerInterceptor,
         networkInterceptor: Interceptor
     ): OkHttpClient {
         val certificate = CertificatePinner.Builder()
@@ -62,7 +69,7 @@ object NetworkModule {
             .build()
         return OkHttpClient().newBuilder()
             .addInterceptor(loggingInterceptor)
-//            .addInterceptor(chuckInterceptor)
+            .addInterceptor(chuckInterceptor)
             .addInterceptor(networkInterceptor)
             .certificatePinner(certificate)
             .build()
